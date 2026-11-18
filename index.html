@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AEGAN MEDIA — Advertising &amp; Digital Marketing Studio | Tamil Nadu, India</title>
+  <meta name="description" content="Aegan Media is an advertising & digital marketing agency in Tamil Nadu, India uniting brand strategy, social media, Meta & Google Ads, and growth automation." />
+  <link rel="icon" type="image/png" href="aegan-logo.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            void: '#07070a',
+            surface: '#0e0e13',
+            card: '#14141b',
+            gold: '#e5b842',
+            goldBright: '#f7d469',
+            water: '#0ea5e9',
+            fire: '#ff6b1a',
+            earth: '#4ade80',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #07070a;
+      color: #f4f4f6;
+      overflow-x: hidden;
+    }
+
+    .text-gold-metallic {
+      background: linear-gradient(135deg, #fff0b3 0%, #e5b842 45%, #b88418 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 60;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    #spotlight {
+      position: fixed;
+      width: 540px;
+      height: 540px;
+      border-radius: 9999px;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(229, 184, 66, 0.11) 0%, rgba(255, 107, 26, 0.04) 40%, transparent 70%);
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .elemental-aura {
+      background: conic-gradient(
+        from 0deg,
+        rgba(228, 228, 231, 0.45),
+        rgba(255, 107, 26, 0.55),
+        rgba(74, 222, 128, 0.5),
+        rgba(14, 165, 233, 0.55),
+        rgba(228, 228, 231, 0.45)
+      );
+      filter: blur(36px);
+      animation: slowSpin 16s linear infinite;
+    }
+    @keyframes slowSpin {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.06); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 26s linear infinite;
+    }
+    .marquee-wrap:hover .animate-marquee {
+      animation-play-state: paused;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-item.open .faq-body {
+      max-height: 260px;
+    }
+    .faq-item.open .faq-plus {
+      transform: rotate(45deg);
+      color: #e5b842;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-gold selection:text-black">
+
+  <div class="noise-overlay"></div>
+  <div id="spotlight" class="hidden md:block"></div>
+
+  <!-- Floating Glass Navbar -->
+  <header class="fixed top-4 inset-x-0 z-50 px-4">
+    <div class="max-w-6xl mx-auto rounded-full bg-surface/85 backdrop-blur-xl border border-white/10 px-4 sm:px-6 h-16 flex items-center justify-between shadow-2xl shadow-black/50">
+      <a href="#top" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center overflow-hidden shadow-md ring-1 ring-gold/40 group-hover:scale-105 transition-transform">
+          <img
+            src="aegan-logo.png"
+            alt="Aegan Media"
+            class="w-full h-full object-contain"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <span style="display:none;" class="w-full h-full items-center justify-center font-display font-extrabold text-xs text-black">AM</span>
+        </div>
+        <div class="leading-none">
+          <span class="font-display font-extrabold tracking-wider text-sm sm:text-base uppercase text-gold-metallic block">
+            AEGAN
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.35em] text-zinc-400 block mt-0.5">MEDIA</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-xs uppercase tracking-widest text-zinc-400 font-medium">
+        <a href="#services" class="hover:text-gold transition">Elements</a>
+        <a href="#work" class="hover:text-gold transition">Work</a>
+        <a href="#process" class="hover:text-gold transition">Approach</a>
+        <a href="#faq" class="hover:text-gold transition">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-goldBright to-gold text-black hover:brightness-110 text-xs font-bold uppercase tracking-wider transition">
+          Start a Project <span>&nearr;</span>
+        </a>
+        <button id="menuBtn" class="md:hidden p-2 text-zinc-300 hover:text-white" aria-label="Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden max-w-6xl mx-auto mt-2 rounded-3xl bg-card/95 backdrop-blur-xl border border-white/10 p-6 space-y-4 text-sm">
+      <a href="#services" class="block text-zinc-300 hover:text-gold">4 Elemental Pillars</a>
+      <a href="#work" class="block text-zinc-300 hover:text-gold">Selected Work</a>
+      <a href="#process" class="block text-zinc-300 hover:text-gold">Approach</a>
+      <a href="#faq" class="block text-zinc-300 hover:text-gold">FAQ</a>
+      <a href="#contact" class="block text-center py-3 rounded-full bg-gold text-black font-bold">Let’s Talk</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="top" class="relative z-10 pt-36 pb-20 md:pt-44 md:pb-28 px-5">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+
+      <div class="lg:col-span-7 space-y-7">
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs text-zinc-300">
+          <span class="flex gap-1">
+            <span class="w-2 h-2 rounded-full bg-zinc-200"></span>
+            <span class="w-2 h-2 rounded-full bg-water"></span>
+            <span class="w-2 h-2 rounded-full bg-fire"></span>
+            <span class="w-2 h-2 rounded-full bg-earth"></span>
+          </span>
+          Advertising &amp; Digital Marketing &bull; Tamil Nadu, India
+        </div>
+
+        <h1 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-[4.35rem] leading-[1.0] tracking-tight">
+          FOUR ELEMENTS. <br />
+          ONE <span class="font-serif italic font-normal text-gold-metallic text-5xl sm:text-7xl lg:text-[5.2rem] pr-1">Unignorable</span> <br />
+          BRAND FORCE.
+        </h1>
+
+        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-xl">
+          <strong class="text-white font-medium">Aegan Media</strong> fuses creative brand clarity, flowing social storytelling, high-ignition performance ads, and grounded automation—helping businesses across Tamil Nadu and beyond turn attention into growth.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 pt-1">
+          <a href="#contact" class="px-7 py-4 rounded-full bg-gradient-to-r from-goldBright to-gold text-black hover:brightness-110 font-bold text-sm tracking-wide transition shadow-lg shadow-gold/20">
+            Book a Strategy Call &rarr;
+          </a>
+          <a href="https://wa.me/917871180024?text=Hi%20Aegan%20Media%2C%20I%20would%20like%20to%20discuss%20a%20marketing%20project." target="_blank" rel="noopener" class="px-7 py-4 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 text-white font-medium text-sm transition inline-flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-earth"></span>
+            WhatsApp Us
+          </a>
+        </div>
+
+        <!-- Proof Counters -->
+        <div class="grid grid-cols-3 gap-6 pt-6 border-t border-white/10 max-w-lg">
+          <div>
+            <div class="font-display text-2xl sm:text-3xl font-bold text-white">4+</div>
+            <div class="text-[11px] text-zinc-400 mt-1 uppercase tracking-wider">Years Craft</div>
+          </div>
+          <div>
+            <div class="font-display text-2xl sm:text-3xl font-bold text-gold">04</div>
+            <div class="text-[11px] text-zinc-400 mt-1 uppercase tracking-wider">Core Pillars</div>
+          </div>
+          <div>
+            <div class="font-display text-2xl sm:text-3xl font-bold text-white">30+</div>
+            <div class="text-[11px] text-zinc-400 mt-1 uppercase tracking-wider">Campaigns</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Brand Logo Medallion Card -->
+      <div class="lg:col-span-5">
+        <div class="relative rounded-[2rem] bg-card border border-white/10 p-6 sm:p-8 overflow-hidden shadow-2xl">
+          <div class="elemental-aura absolute inset-8 rounded-full opacity-45 pointer-events-none"></div>
+
+          <div class="relative z-10 flex items-center justify-between text-[11px] uppercase tracking-widest text-zinc-400 mb-5">
+            <span>Brand Emblem</span>
+            <span class="text-gold font-semibold">Tamil Nadu, India</span>
+          </div>
+
+          <div class="relative z-10 rounded-3xl bg-white p-6 sm:p-8 shadow-2xl ring-2 ring-gold/30 flex flex-col items-center justify-center">
+            <img
+              src="aegan-logo.png"
+              alt="Aegan Media Official Logo"
+              class="w-full max-w-[260px] h-auto object-contain mx-auto"
+              onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';"
+            />
+            <div id="logoFallback" style="display:none;" class="text-center py-8 text-zinc-800">
+              <div class="font-display font-extrabold text-2xl tracking-wider text-amber-600">AEGAN MEDIA</div>
+              <p class="text-xs text-zinc-500 mt-2">Save your logo as <code>aegan-logo.png</code> in this folder.</p>
+            </div>
+          </div>
+
+          <div class="relative z-10 grid grid-cols-4 gap-2 mt-5 text-center text-[10px] uppercase tracking-wider text-zinc-300">
+            <div class="py-2 rounded-xl bg-white/[0.04] border border-white/10">
+              <span class="block w-1.5 h-1.5 rounded-full bg-zinc-200 mx-auto mb-1"></span>
+              Strategy
+            </div>
+            <div class="py-2 rounded-xl bg-white/[0.04] border border-white/10">
+              <span class="block w-1.5 h-1.5 rounded-full bg-water mx-auto mb-1"></span>
+              Social
+            </div>
+            <div class="py-2 rounded-xl bg-white/[0.04] border border-white/10">
+              <span class="block w-1.5 h-1.5 rounded-full bg-fire mx-auto mb-1"></span>
+              Ads
+            </div>
+            <div class="py-2 rounded-xl bg-white/[0.04] border border-white/10">
+              <span class="block w-1.5 h-1.5 rounded-full bg-earth mx-auto mb-1"></span>
+              Systems
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Kinetic Marquee -->
+  <div class="marquee-wrap relative z-10 border-y border-white/10 bg-surface py-4 overflow-hidden select-none">
+    <div class="animate-marquee font-display text-lg sm:text-xl font-bold uppercase tracking-widest text-zinc-400">
+      <span class="mx-6">Brand Advertising</span><span class="text-gold">&bull;</span>
+      <span class="mx-6 text-white">Meta &amp; Google Ads</span><span class="text-water">&bull;</span>
+      <span class="mx-6">Reels &amp; Creative Studio</span><span class="text-fire">&bull;</span>
+      <span class="mx-6 text-white">Social Media Growth</span><span class="text-earth">&bull;</span>
+      <span class="mx-6">Conversion Funnels</span><span class="text-gold">&bull;</span>
+      <span class="mx-6 text-white">AI Lead Systems</span><span class="text-fire">&bull;</span>
+      <!-- Duplicate -->
+      <span class="mx-6">Brand Advertising</span><span class="text-gold">&bull;</span>
+      <span class="mx-6 text-white">Meta &amp; Google Ads</span><span class="text-water">&bull;</span>
+      <span class="mx-6">Reels &amp; Creative Studio</span><span class="text-fire">&bull;</span>
+      <span class="mx-6 text-white">Social Media Growth</span><span class="text-earth">&bull;</span>
+      <span class="mx-6">Conversion Funnels</span><span class="text-gold">&bull;</span>
+      <span class="mx-6 text-white">AI Lead Systems</span><span class="text-fire">&bull;</span>
+    </div>
+  </div>
+
+  <!-- Interactive 4-Element Services Deck -->
+  <section id="services" class="relative z-10 py-24 md:py-32 px-5">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-gold font-semibold">01 / Our Four Elements</p>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold mt-2">
+            Capabilities Built in <span class="font-serif italic font-normal text-gold-metallic">Balance</span>
+          </h2>
+        </div>
+        <p class="text-sm text-zinc-400 max-w-md">
+          Inspired by our emblem, each element powers a distinct stage of your brand’s growth. Hover or tap to inspect deliverables.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7 divide-y divide-white/10 border-y border-white/10">
+          <button type="button" class="service-tab w-full text-left py-7 px-3 flex items-center justify-between gap-4 group transition" data-index="0">
+            <div class="flex items-baseline gap-5">
+              <span class="font-display text-sm text-gold font-bold">01</span>
+              <div>
+                <h3 class="font-display text-2xl sm:text-3xl font-bold text-white transition">Brand Advertising &amp; Strategy</h3>
+                <p class="text-xs text-zinc-500 mt-1">Element: Air &bull; Positioning, Messaging &amp; Ad Creative</p>
+              </div>
+            </div>
+            <span class="tab-arrow text-2xl text-gold transition-transform">&rarr;</span>
+          </button>
+
+          <button type="button" class="service-tab w-full text-left py-7 px-3 flex items-center justify-between gap-4 group transition" data-index="1">
+            <div class="flex items-baseline gap-5">
+              <span class="font-display text-sm text-zinc-500 font-bold">02</span>
+              <div>
+                <h3 class="font-display text-2xl sm:text-3xl font-bold text-zinc-300 group-hover:text-white transition">Social Media &amp; Reels Production</h3>
+                <p class="text-xs text-zinc-500 mt-1">Element: Water &bull; Content Flow, Hooks &amp; Channel Growth</p>
+              </div>
+            </div>
+            <span class="tab-arrow text-2xl text-zinc-600 group-hover:text-white transition-transform">&rarr;</span>
+          </button>
+
+          <button type="button" class="service-tab w-full text-left py-7 px-3 flex items-center justify-between gap-4 group transition" data-index="2">
+            <div class="flex items-baseline gap-5">
+              <span class="font-display text-sm text-zinc-500 font-bold">03</span>
+              <div>
+                <h3 class="font-display text-2xl sm:text-3xl font-bold text-zinc-300 group-hover:text-white transition">Performance Ads (Meta &amp; Google)</h3>
+                <p class="text-xs text-zinc-500 mt-1">Element: Fire &bull; Paid Scale, Creative Testing &amp; ROAS</p>
+              </div>
+            </div>
+            <span class="tab-arrow text-2xl text-zinc-600 group-hover:text-white transition-transform">&rarr;</span>
+          </button>
+
+          <button type="button" class="service-tab w-full text-left py-7 px-3 flex items-center justify-between gap-4 group transition" data-index="3">
+            <div class="flex items-baseline gap-5">
+              <span class="font-display text-sm text-zinc-500 font-bold">04</span>
+              <div>
+                <h3 class="font-display text-2xl sm:text-3xl font-bold text-zinc-300 group-hover:text-white transition">Funnels &amp; AI Lead Automation</h3>
+                <p class="text-xs text-zinc-500 mt-1">Element: Earth &bull; Landing Pages, WhatsApp CRM &amp; Retention</p>
+              </div>
+            </div>
+            <span class="tab-arrow text-2xl text-zinc-600 group-hover:text-white transition-transform">&rarr;</span>
+          </button>
+        </div>
+
+        <div class="lg:col-span-5 lg:sticky lg:top-28">
+          <div id="servicePreview" class="rounded-3xl bg-gradient-to-b from-card to-surface border border-white/10 p-8 space-y-6 transition-all duration-300">
+            <div class="flex items-center justify-between">
+              <span id="prevBadge" class="px-3 py-1 rounded-full bg-zinc-200/15 text-zinc-200 text-xs font-semibold uppercase tracking-wider">Air &bull; Pillar 01</span>
+              <span id="prevTag" class="text-xs text-zinc-400">Positioning First</span>
+            </div>
+
+            <h4 id="prevTitle" class="font-display text-2xl font-bold text-white">
+              Make People Remember You Before They Need You.
+            </h4>
+
+            <p id="prevDesc" class="text-sm text-zinc-400 leading-relaxed">
+              We craft sharp messaging, campaign visuals, and ad angles that separate your brand from generic competitors—giving every rupee of ad spend stronger recall.
+            </p>
+
+            <div class="pt-4 border-t border-white/10">
+              <p class="text-xs uppercase tracking-wider text-zinc-500 mb-3">Included Deliverables</p>
+              <ul id="prevList" class="space-y-2 text-sm text-zinc-200">
+                <li class="flex items-center gap-2.5"><span class="text-gold">&#10003;</span> Brand Messaging &amp; Hook Angles</li>
+                <li class="flex items-center gap-2.5"><span class="text-gold">&#10003;</span> Static &amp; Motion Ad Creative Kits</li>
+                <li class="flex items-center gap-2.5"><span class="text-gold">&#10003;</span> Campaign Launch Concepts</li>
+              </ul>
+            </div>
+
+            <a href="#contact" class="inline-flex items-center justify-center w-full py-3.5 rounded-xl bg-gradient-to-r from-goldBright to-gold text-black hover:brightness-110 font-bold text-sm transition">
+              Enquire About This Pillar &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Work -->
+  <section id="work" class="relative z-10 py-24 px-5 bg-surface border-y border-white/10">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-gold font-semibold">02 / Selected Work</p>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold mt-2">Campaigns Built to Convert</h2>
+        </div>
+        <p class="text-xs text-zinc-400">*Sample layout cards — replace with your real campaign visuals</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="reveal group rounded-3xl bg-card border border-white/10 overflow-hidden hover:border-fire/50 transition">
+          <div class="h-64 p-6 bg-gradient-to-br from-[#23140b] via-[#131319] to-[#0a0a0d] relative flex flex-col justify-between overflow-hidden">
+            <div class="absolute right-[-30px] bottom-[-30px] w-56 h-56 rounded-full bg-fire/25 blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
+            <div class="flex justify-between items-center relative z-10">
+              <span class="px-3 py-1 rounded-full bg-black/50 border border-white/10 text-[11px] uppercase tracking-wider text-zinc-300">D2C &amp; Retail</span>
+              <span class="text-xs font-mono text-fire">META ADS + REELS</span>
+            </div>
+            <div class="relative z-10 my-auto">
+              <div class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+                CREATIVE <span class="font-serif italic font-normal text-goldBright">Testing</span> SPRINT
+              </div>
+              <p class="text-xs text-zinc-400 mt-1">12 Hook Variations &bull; UGC + Motion Ads &bull; WhatsApp Funnel</p>
+            </div>
+            <div class="relative z-10 flex gap-3">
+              <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-zinc-300">Lower CPA</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-zinc-300">High Thumbstop</span>
+            </div>
+          </div>
+          <div class="p-7 flex items-center justify-between gap-4">
+            <div>
+              <h3 class="font-display text-xl font-bold">Regional Lifestyle Brand Launch</h3>
+              <p class="text-sm text-zinc-400 mt-1">Full-funnel Meta campaign &amp; high-retention short-form video ads.</p>
+            </div>
+            <a href="#contact" class="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center shrink-0 group-hover:bg-gold group-hover:text-black group-hover:border-gold transition">&nearr;</a>
+          </div>
+        </article>
+
+        <article class="reveal group rounded-3xl bg-card border border-white/10 overflow-hidden hover:border-water/50 transition">
+          <div class="h-64 p-6 bg-gradient-to-br from-[#0b1b29] via-[#131319] to-[#0a0a0d] relative flex flex-col justify-between overflow-hidden">
+            <div class="absolute left-[-20px] top-[-20px] w-56 h-56 rounded-full bg-water/25 blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
+            <div class="flex justify-between items-center relative z-10">
+              <span class="px-3 py-1 rounded-full bg-black/50 border border-white/10 text-[11px] uppercase tracking-wider text-zinc-300">B2B / Services</span>
+              <span class="text-xs font-mono text-water">BRAND + GOOGLE</span>
+            </div>
+            <div class="relative z-10 my-auto">
+              <div class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+                AUTHORITY <span class="font-serif italic font-normal text-earth">Engine</span>
+              </div>
+              <p class="text-xs text-zinc-400 mt-1">Founder Presence &bull; Search Intent Ads &bull; Automated Booking</p>
+            </div>
+            <div class="relative z-10 flex gap-3">
+              <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-zinc-300">Qualified Leads</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-zinc-300">Fast Response</span>
+            </div>
+          </div>
+          <div class="p-7 flex items-center justify-between gap-4">
+            <div>
+              <h3 class="font-display text-xl font-bold">Service Business Lead Pipeline</h3>
+              <p class="text-sm text-zinc-400 mt-1">Search ads paired with an automated WhatsApp qualification flow.</p>
+            </div>
+            <a href="#contact" class="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center shrink-0 group-hover:bg-gold group-hover:text-black group-hover:border-gold transition">&nearr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bento Grid: Strategy & Approach -->
+  <section id="process" class="relative z-10 py-24 md:py-32 px-5">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal max-w-2xl mb-14">
+        <p class="text-xs uppercase tracking-[0.2em] text-gold font-semibold">03 / The Aegan Method</p>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold mt-2">
+          Strategy First. <span class="font-serif italic font-normal text-zinc-400">Creative Always.</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-5">
+        <div class="reveal md:col-span-6 p-8 rounded-3xl bg-card border border-white/10 flex flex-col justify-between min-h-[220px]">
+          <div class="flex justify-between items-center">
+            <span class="font-display text-xs uppercase tracking-widest text-gold">Step 01</span>
+            <span class="text-xs text-zinc-500">Audit &amp; Positioning</span>
+          </div>
+          <div class="mt-6">
+            <h3 class="font-display text-2xl font-bold">Decode Your Market</h3>
+            <p class="text-sm text-zinc-400 mt-2 leading-relaxed">
+              Before filming a single reel or launching an ad set, we audit your offer, audience psychology, and competitor creative gaps.
+            </p>
+          </div>
+        </div>
+
+        <div class="reveal md:col-span-6 p-8 rounded-3xl bg-card border border-white/10 flex flex-col justify-between min-h-[220px]">
+          <div class="flex justify-between items-center">
+            <span class="font-display text-xs uppercase tracking-widest text-water">Step 02</span>
+            <span class="text-xs text-zinc-500">Blueprint</span>
+          </div>
+          <div class="mt-6">
+            <h3 class="font-display text-2xl font-bold">Architect the Creative &amp; Funnel</h3>
+            <p class="text-sm text-zinc-400 mt-2 leading-relaxed">
+              We map out scroll-stopping hooks, content calendars, media buying budgets, and conversion landing pages under one cohesive plan.
+            </p>
+          </div>
+        </div>
+
+        <div class="reveal md:col-span-4 p-8 rounded-3xl bg-card border border-white/10">
+          <span class="font-display text-xs uppercase tracking-widest text-fire">Step 03</span>
+          <h3 class="font-display text-xl font-bold mt-4">Rapid Production</h3>
+          <p class="text-sm text-zinc-400 mt-2 leading-relaxed">
+            Scripts, design sprints, video edits, and tracking pixels deployed within days—not months.
+          </p>
+        </div>
+
+        <div class="reveal md:col-span-4 p-8 rounded-3xl bg-card border border-white/10">
+          <span class="font-display text-xs uppercase tracking-widest text-earth">Step 04</span>
+          <h3 class="font-display text-xl font-bold mt-4">Scale What Wins</h3>
+          <p class="text-sm text-zinc-400 mt-2 leading-relaxed">
+            Weekly creative refreshes and budget reallocation toward the ads bringing real revenue.
+          </p>
+        </div>
+
+        <div class="reveal md:col-span-4 p-8 rounded-3xl bg-gradient-to-br from-goldBright via-gold to-[#a87914] text-black flex flex-col justify-between">
+          <span class="text-xs uppercase tracking-widest font-bold opacity-80">Why Aegan Media</span>
+          <div>
+            <h3 class="font-display text-2xl font-extrabold mt-3">No Fluff. Just Signal.</h3>
+            <p class="text-sm text-black/80 font-medium mt-2">Direct communication, transparent ad accounts, and creative that moves the needle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="relative z-10 py-20 px-5 bg-surface border-t border-white/10">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-xs uppercase tracking-[0.2em] text-gold font-semibold">04 / Clarity</p>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2">Questions Clients Ask Us</h2>
+      </div>
+
+      <div class="space-y-3">
+        <div class="faq-item rounded-2xl bg-card border border-white/10">
+          <button type="button" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-medium text-white">What makes Aegan Media different from typical agencies?</span>
+            <span class="faq-plus text-2xl text-zinc-400 transition-transform leading-none">+</span>
+          </button>
+          <div class="faq-body px-6">
+            <p class="pb-6 text-sm text-zinc-400 leading-relaxed">
+              Most agencies separate creative people from media buyers. We unite all four elements—strategy, content, performance ads, and automation—under one roof so every campaign compounds.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item rounded-2xl bg-card border border-white/10">
+          <button type="button" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-medium text-white">Do we own our ad accounts, creatives, and data?</span>
+            <span class="faq-plus text-2xl text-zinc-400 transition-transform leading-none">+</span>
+          </button>
+          <div class="faq-body px-6">
+            <p class="pb-6 text-sm text-zinc-400 leading-relaxed">
+              100%. Everything runs through your Business Manager and Google Ads account, and ad spend goes directly to the platforms. Zero lock-in.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item rounded-2xl bg-card border border-white/10">
+          <button type="button" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-medium text-white">Do you work only in Tamil Nadu or across India?</span>
+            <span class="faq-plus text-2xl text-zinc-400 transition-transform leading-none">+</span>
+          </button>
+          <div class="faq-body px-6">
+            <p class="pb-6 text-sm text-zinc-400 leading-relaxed">
+              We are proudly based in Tamil Nadu, India and partner with brands across Chennai, Coimbatore, Madurai, Bengaluru, pan-India, and international markets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="relative z-10 py-24 md:py-32 px-5">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5 space-y-6">
+          <p class="text-xs uppercase tracking-[0.2em] text-gold font-semibold">05 / Let’s Collaborate</p>
+          <h2 class="font-display text-4xl sm:text-5xl font-extrabold leading-tight">
+            LET’S MAKE YOUR BRAND <span class="font-serif italic font-normal text-gold-metallic">Impossible</span> TO IGNORE.
+          </h2>
+          <p class="text-zinc-400 leading-relaxed">
+            Tell us what you’re building. Submit your brief to send it straight to our WhatsApp or reach out directly via email.
+          </p>
+
+          <div class="pt-4 space-y-4 text-sm border-t border-white/10">
+            <div class="flex justify-between gap-4">
+              <span class="text-zinc-500">Email</span>
+              <a href="mailto:aeganmediaofficial@gmail.com" class="text-white hover:text-gold transition break-all text-right">aeganmediaofficial@gmail.com</a>
+            </div>
+            <div class="flex justify-between gap-4">
+              <span class="text-zinc-500">WhatsApp / Call</span>
+              <a href="https://wa.me/917871180024" target="_blank" rel="noopener" class="text-white hover:text-gold transition">+91 78711 80024</a>
+            </div>
+            <div class="flex justify-between gap-4">
+              <span class="text-zinc-500">Studio</span>
+              <span class="text-white text-right">Tamil Nadu, India</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <form id="creativeForm" class="rounded-3xl bg-card border border-white/10 p-6 sm:p-9 space-y-6">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-3">Select Your Pillars</label>
+              <div class="flex flex-wrap gap-2.5" id="servicePills">
+                <button type="button" class="pill px-4 py-2 rounded-full border border-white/15 text-xs text-zinc-300 hover:border-gold transition" data-val="Brand Advertising">Brand Advertising</button>
+                <button type="button" class="pill px-4 py-2 rounded-full border border-white/15 text-xs text-zinc-300 hover:border-gold transition" data-val="Social Media & Reels">Social Media &amp; Reels</button>
+                <button type="button" class="pill px-4 py-2 rounded-full border border-white/15 text-xs text-zinc-300 hover:border-gold transition" data-val="Meta & Google Ads">Meta &amp; Google Ads</button>
+                <button type="button" class="pill px-4 py-2 rounded-full border border-white/15 text-xs text-zinc-300 hover:border-gold transition" data-val="Funnels & Automation">Funnels &amp; Automation</button>
+              </div>
+              <input type="hidden" id="selectedServices" value="" />
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-zinc-400 mb-2">Your Name / Brand *</label>
+                <input id="clientName" type="text" required placeholder="Your Name / Brand"
+                  class="w-full px-4 py-3.5 rounded-xl bg-void border border-white/10 text-sm text-white focus:outline-none focus:border-gold" />
+              </div>
+              <div>
+                <label class="block text-xs text-zinc-400 mb-2">Email *</label>
+                <input id="clientEmail" type="email" required placeholder="you@brand.com"
+                  class="w-full px-4 py-3.5 rounded-xl bg-void border border-white/10 text-sm text-white focus:outline-none focus:border-gold" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-zinc-400 mb-2">Phone / WhatsApp *</label>
+                <input id="clientPhone" type="tel" required placeholder="+91 ..."
+                  class="w-full px-4 py-3.5 rounded-xl bg-void border border-white/10 text-sm text-white focus:outline-none focus:border-gold" />
+              </div>
+              <div>
+                <label class="block text-xs text-zinc-400 mb-2">Instagram / Website Link</label>
+                <input id="clientLink" type="text" placeholder="instagram.com/yourbrand"
+                  class="w-full px-4 py-3.5 rounded-xl bg-void border border-white/10 text-sm text-white focus:outline-none focus:border-gold" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs text-zinc-400 mb-2">Project Brief *</label>
+              <textarea id="clientBrief" rows="3" required placeholder="Share your goals, timeline, and approximate monthly marketing budget..."
+                class="w-full px-4 py-3.5 rounded-xl bg-void border border-white/10 text-sm text-white focus:outline-none focus:border-gold"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-goldBright to-gold text-black hover:brightness-110 font-bold text-sm uppercase tracking-wider transition shadow-lg shadow-gold/15">
+              Send Brief via WhatsApp &rarr;
+            </button>
+
+            <div id="formSuccess" class="hidden rounded-2xl bg-void border border-earth/40 p-4 text-center space-y-3">
+              <p class="text-sm text-earth font-medium">Brief prepared! Tap below if WhatsApp didn’t open automatically:</p>
+              <div class="flex flex-wrap justify-center gap-3">
+                <a id="waDirectLink" href="https://wa.me/917871180024" target="_blank" rel="noopener" class="px-4 py-2 rounded-full bg-earth text-black text-xs font-bold">Open WhatsApp</a>
+                <a id="mailDirectLink" href="mailto:aeganmediaofficial@gmail.com" class="px-4 py-2 rounded-full bg-white/10 text-white text-xs font-medium">Send via Email Instead</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-white/10 py-10 px-5 text-xs text-zinc-500">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-white p-1 flex items-center justify-center overflow-hidden">
+          <img src="aegan-logo.png" alt="Aegan Media" class="w-full h-full object-contain" onerror="this.style.display='none';" />
+        </div>
+        <div>
+          <div class="font-display font-bold tracking-wider uppercase text-sm text-gold-metallic">Aegan Media</div>
+          <div class="text-[11px] text-zinc-500">Tamil Nadu, India</div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-zinc-400">
+        <a href="#services" class="hover:text-gold">Capabilities</a>
+        <a href="#work" class="hover:text-gold">Work</a>
+        <a href="#process" class="hover:text-gold">Approach</a>
+        <a href="mailto:aeganmediaofficial@gmail.com" class="hover:text-gold">Email</a>
+        <a href="https://wa.me/917871180024" target="_blank" rel="noopener" class="hover:text-gold">WhatsApp</a>
+      </div>
+      <div>&copy; 2026 Aegan Media. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Quick Chat Button -->
+  <a href="https://wa.me/917871180024?text=Hi%20Aegan%20Media%2C%20I%20visited%20your%20website%20and%20want%20to%20discuss%20a%20project."
+     target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+     class="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#25D366] text-black font-bold text-xs shadow-2xl shadow-black/60 hover:scale-105 transition-transform">
+    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.375c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.344-2 1.422-.516.078-1.172.109-1.891-.125-.438-.141-.984-.328-1.688-.641-2.969-1.281-4.906-4.266-5.047-4.453-.141-.203-1.203-1.609-1.203-3.063s.766-2.172 1.031-2.469c.266-.297.594-.375.797-.375h.578c.188 0 .438-.078.688.531.25.609.859 2.094.938 2.25.078.156.125.344.016.547-.109.203-.156.344-.313.516-.156.188-.328.406-.469.547-.156.156-.328.328-.141.656.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.625 1.609.328.156.516.125.703-.094.188-.219.813-.953 1.031-1.281.219-.328.438-.266.734-.156.297.109 1.891.891 2.219 1.047.328.156.547.234.625.375.078.141.078.813-.172 1.516z"/></svg>
+    <span class="hidden sm:inline">Chat on WhatsApp</span>
+  </a>
+
+  <script>
+    // 1. Mouse Spotlight
+    const spotlight = document.getElementById('spotlight');
+    window.addEventListener('mousemove', (e) => {
+      spotlight.style.left = e.clientX + 'px';
+      spotlight.style.top = e.clientY + 'px';
+    });
+
+    // 2. Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // 3. Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 4. Interactive 4-Element Service Switcher
+    const serviceData = [
+      {
+        badge: 'Air • Pillar 01',
+        badgeClass: 'bg-zinc-200/15 text-zinc-200',
+        tag: 'Positioning First',
+        title: 'Make People Remember You Before They Need You.',
+        desc: 'We craft sharp messaging, campaign visuals, and ad angles that separate your brand from generic competitors—giving every rupee of ad spend stronger recall.',
+        items: ['Brand Messaging & Hook Angles', 'Static & Motion Ad Creative Kits', 'Campaign Launch Concepts']
+      },
+      {
+        badge: 'Water • Pillar 02',
+        badgeClass: 'bg-sky-500/15 text-sky-400',
+        tag: 'Organic Flow',
+        title: 'Turn Views Into Daily Brand Trust.',
+        desc: 'Consistent reels, carousels, and founder-led storytelling engineered for watch time, shares, and inbound DMs across Instagram, LinkedIn, and YouTube.',
+        items: ['Monthly Content & Reel Strategy', 'Retention Editing & Hooks', 'Publishing & Community Growth']
+      },
+      {
+        badge: 'Fire • Pillar 03',
+        badgeClass: 'bg-orange-500/15 text-orange-400',
+        tag: 'Paid Ignition',
+        title: 'Data-Backed Media Buying That Protects Margin.',
+        desc: 'Structured Meta & Google Ad campaigns with rapid creative testing, clean pixel/CAPI tracking, and weekly optimization around cost per qualified lead.',
+        items: ['Meta (IG/FB) & Google Search Ads', 'Weekly Creative Split-Testing', 'Live ROAS & Lead Reporting']
+      },
+      {
+        badge: 'Earth • Pillar 04',
+        badgeClass: 'bg-emerald-500/15 text-emerald-400',
+        tag: 'Grounded Systems',
+        title: 'Never Lose a Warm Lead to Slow Replies.',
+        desc: 'High-converting landing pages wired directly to WhatsApp, CRM pipelines, and AI-assisted follow-ups so prospects book calls automatically.',
+        items: ['Custom Landing Pages', 'WhatsApp & CRM Lead Routing', 'Automated Follow-Up Sequences']
+      }
+    ];
+
+    const tabs = document.querySelectorAll('.service-tab');
+    const updateServiceCard = (idx) => {
+      const d = serviceData[idx];
+      const badge = document.getElementById('prevBadge');
+      badge.textContent = d.badge;
+      badge.className = `px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${d.badgeClass}`;
+      document.getElementById('prevTag').textContent = d.tag;
+      document.getElementById('prevTitle').textContent = d.title;
+      document.getElementById('prevDesc').textContent = d.desc;
+      document.getElementById('prevList').innerHTML = d.items
+        .map(item => `<li class="flex items-center gap-2.5"><span class="text-gold">&#10003;</span> ${item}</li>`)
+        .join('');
+
+      tabs.forEach((t, i) => {
+        const num = t.querySelector('span:first-child');
+        const h3 = t.querySelector('h3');
+        const arrow = t.querySelector('.tab-arrow');
+        if (i === idx) {
+          num.classList.remove('text-zinc-500');
+          num.classList.add('text-gold');
+          h3.classList.replace('text-zinc-300', 'text-white');
+          arrow.classList.add('text-gold', 'translate-x-1');
+          arrow.classList.remove('text-zinc-600');
+        } else {
+          num.classList.remove('text-gold', 'text-zinc-200');
+          num.classList.add('text-zinc-500');
+          h3.classList.replace('text-white', 'text-zinc-300');
+          arrow.classList.remove('text-gold', 'translate-x-1');
+          arrow.classList.add('text-zinc-600');
+        }
+      });
+    };
+
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => updateServiceCard(idx));
+      tab.addEventListener('mouseenter', () => {
+        if (window.innerWidth >= 1024) updateServiceCard(idx);
+      });
+    });
+
+    // 5. FAQ Accordion
+    document.querySelectorAll('.faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) other.classList.remove('open');
+        });
+        item.classList.toggle('open');
+      });
+    });
+
+    // 6. Selectable Service Pills
+    const selectedSet = new Set();
+    document.querySelectorAll('.pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        const val = pill.dataset.val;
+        if (selectedSet.has(val)) {
+          selectedSet.delete(val);
+          pill.classList.remove('bg-gold', 'border-gold', 'text-black', 'font-semibold');
+          pill.classList.add('border-white/15', 'text-zinc-300');
+        } else {
+          selectedSet.add(val);
+          pill.classList.add('bg-gold', 'border-gold', 'text-black', 'font-semibold');
+          pill.classList.remove('border-white/15', 'text-zinc-300');
+        }
+        document.getElementById('selectedServices').value = Array.from(selectedSet).join(', ');
+      });
+    });
+
+    // 7. WhatsApp + Email Brief Submission
+    document.getElementById('creativeForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const services = document.getElementById('selectedServices').value || 'General Enquiry';
+      const name = document.getElementById('clientName').value.trim();
+      const email = document.getElementById('clientEmail').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const link = document.getElementById('clientLink').value.trim() || 'Not provided';
+      const brief = document.getElementById('clientBrief').value.trim();
+
+      const msg = [
+        `*New Project Brief — Aegan Media*`,
+        `Name/Brand: ${name}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Link: ${link}`,
+        `Services: ${services}`,
+        `Brief: ${brief}`
+      ].join('\n');
+
+      const waUrl = `https://wa.me/917871180024?text=${encodeURIComponent(msg)}`;
+      const mailUrl = `mailto:aeganmediaofficial@gmail.com?subject=${encodeURIComponent('New Project Brief from ' + name)}&body=${encodeURIComponent(msg)}`;
+
+      document.getElementById('waDirectLink').href = waUrl;
+      document.getElementById('mailDirectLink').href = mailUrl;
+      document.getElementById('formSuccess').classList.remove('hidden');
+
+      window.open(waUrl, '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>
